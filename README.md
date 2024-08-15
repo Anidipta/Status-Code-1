@@ -2,3 +2,7 @@
 
 # MediTrack
 ### StatusCode 1 
+## Members: 
+-> (Anidipta Pal)[https://github.com/Anidipta]
+-> (Soumyadip Roy)[https://github.com/SoumyadipRoy16]
+-> (Ananyo Dasgupta)[]
