@@ -1,1 +1,3 @@
-![image](https://github.com/user-attachments/assets/66fdd45f-60e5-4668-af2a-39c4fa9415e1)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/66fdd45f-60e5-4668-af2a-39c4fa9415e1" alt="image">
+</p>
