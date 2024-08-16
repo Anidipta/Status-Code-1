@@ -10,6 +10,6 @@ Run the following commands in the terminal to view the progress so far:
 2. `npm start`
 
 ### Team Members
-- [Soumyadip Roy]
-- [Anidipta Pal]
-- [Ananyo Dasgupta]
+- [Soumyadip Roy](https://github.com/SoumyadipRoy16)
+- [Anidipta Pal](https://github.com/Anidipta)
+- [Ananyo Dasgupta](https://github.com/CodenWizFresk)
