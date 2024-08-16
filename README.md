@@ -12,4 +12,4 @@ Run the following commands in the terminal to view the progress so far:
 ### Team Members
 - [Soumyadip Roy](https://github.com/SoumyadipRoy16)
 - [Anidipta Pal](https://github.com/Anidipta)
-- [Ananyo Dasgupta](https://github.com/CodenWizFresk)
+- [Ananyo Dasgupta](https://github.com/CodenWizFreak)
