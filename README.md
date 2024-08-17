@@ -22,7 +22,7 @@ Run the following commands in the terminal to view the progress so far:
 1. `npm install`
 2. `npm start`
 
-### Team Members
+# Team Members
 - [Soumyadip Roy](https://github.com/SoumyadipRoy16)
 - [Anidipta Pal](https://github.com/Anidipta)
 - [Ananyo Dasgupta](https://github.com/CodenWizFreak)
