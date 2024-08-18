@@ -1,0 +1,125 @@
+/* App.css */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background: linear-gradient(120deg, #1e3a8a, #2563eb);
+  color: white;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the footer is at the bottom of the page */
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 60px); /* Adjusting height based on header size */
+  overflow: auto; /* Prevent overflow on the main container */
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-left: 0px; /* Sidebar width */
+}
+
+.appointments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #1e40af;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding-top: 60px;
+}
+
+.header {
+  background-color: #1e3a8a;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link:hover .underline-effect {
+  transform: scaleX(1);
+}
+
+.underline-effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: #4ade80; /* Green color for underline */
+  width: 100%;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+/* Background animation */
+@keyframes floatingAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.animated-bg::before,
+.animated-bg::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  animation: floatingAnimation 8s ease-in-out infinite;
+}
+
+.animated-bg::after {
+  top: 70%;
+  left: 10%;
+}
+
+.animated-bg::before {
+  top: 20%;
+  left: 80%;
+}
+
+.footer {
+  position: fixed; /* Fix the footer at the bottom */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1e3a8a; /* Background color for the footer */
+  color: white; /* Text color for the footer */
+  text-align: center; /* Center the text */
+  padding: 10px 0; /* Padding for the footer */
+}
