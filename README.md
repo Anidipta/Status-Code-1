@@ -44,6 +44,20 @@ To view the progress of the Patient Dashboard, follow these steps:
     npm start
     ```
 
+## 🏥 Doctor Dashboard
+
+To view the progress of the Patient Dashboard, follow these steps:
+
+1. Open a terminal window and run:
+    ```bash
+    npm install
+    ```
+    This installs all required packages.
+2. Start the Patient Dashboard server with:
+    ```bash
+    npm start
+    ```
+
 ## 👥 Team Members
 
 Meet the team behind the project:
