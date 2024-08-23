@@ -1,0 +1,12 @@
+/* index.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents scrolling */
+  font-family: 'Segoe Script', cursive;
+}
+
+* {
+  box-sizing: border-box;
+}

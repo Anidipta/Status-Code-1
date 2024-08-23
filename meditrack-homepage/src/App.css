@@ -1,0 +1,21 @@
+/* index.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents scrolling */
+  font-family: 'Segoe Script', cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --light-bg: #ffffff;
+  --dark-bg: #333333;
+  --light-text: #000000;
+  --dark-text: #ffffff;
+  --light-blob-color: #28a745; /* Green for light mode */
+  --dark-blob-color: #ffffff;  /* White for dark mode */
+}
