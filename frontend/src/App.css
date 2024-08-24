@@ -1,0 +1,236 @@
+:root {
+  --main-bg-color: #f5f7fb;
+  --sidebar-bg-color: #ffffff;
+  --text-color: #3e3e3e;
+  --highlight-color: #65b2f0;
+  --secondary-color: #e0e0e0;
+  --pink-color: #ff7eb9;
+  --blue-color: #8ecae6;
+  --light-gray: #f0f0f0;
+  --header-text-color: #888888;
+  --card-bg-color: #f9f9f9;
+  --card-border-color: #e0e0e0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--main-bg-color);
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: var(--sidebar-bg-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar ul li {
+  padding: 15px 0;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.sidebar ul li:hover {
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  padding-left: 10px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--secondary-color);
+  width: 300px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.statistics {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  background-color: var(--card-bg-color);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  margin-right: 20px;
+  border: 1px solid var(--card-border-color);
+}
+
+.stat-item:last-child {
+  margin-right: 0;
+}
+
+.stat-item span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.schedule {
+  margin-bottom: 20px;
+  background-color: var(--card-bg-color);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border-color);
+}
+
+.schedule h3 {
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  color: var(--header-text-color);
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 50px repeat(6, 1fr);
+  grid-template-rows: repeat(4, 50px);
+  gap: 10px;
+  align-items: center;
+  position: relative;
+}
+
+.time-slot {
+  text-align: center;
+  font-weight: bold;
+  color: var(--header-text-color);
+}
+
+.day-label {
+  text-align: center;
+  font-weight: bold;
+  color: var(--header-text-color);
+}
+
+.appointment {
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--light-gray);
+  position: relative;
+}
+
+.appointment.monitoring {
+  background-color: var(--blue-color);
+  grid-column: 2 / 4;
+}
+
+.appointment.pink {
+  background-color: var(--pink-color);
+  grid-column: 4 / 6;
+}
+
+.current-time-line {
+  position: absolute;
+  width: 2px;
+  background-color: var(--highlight-color);
+  height: 100%;
+  left: 0;
+}
+
+.upcoming-appointments {
+  margin-bottom: 20px;
+}
+
+.upcoming-appointments h3 {
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  color: var(--header-text-color);
+}
+
+.upcoming-appointments table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card-bg-color);
+  border-radius: 10px;
+  border: 1px solid var(--card-border-color);
+}
+
+.upcoming-appointments table th,
+.upcoming-appointments table td {
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.upcoming-appointments table tr:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.right-sidebar {
+  width: 220px;
+  background-color: var(--sidebar-bg-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.right-sidebar .calendar,
+.right-sidebar .activity,
+.right-sidebar .notifications {
+  margin-bottom: 20px;
+}
+
+.right-sidebar h3 {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.right-sidebar .days {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
