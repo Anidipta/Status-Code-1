@@ -1,0 +1,123 @@
+/* Overall container styling for patient directory */
+.patient-directory {
+	max-width: 1200px;
+	margin: 40px auto;
+	padding: 20px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	font-family: 'Arial', sans-serif;
+}
+
+/* Title of the directory */
+.patient-directory h1 {
+	font-size: 28px;
+	text-align: left;
+	margin-bottom: 30px;
+	color: #333;
+}
+
+/* Grid container for patients */
+.patient-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 30px;
+}
+
+/* Individual patient card */
+.patient-card {
+	background-color: #f9f9f9;
+	border-radius: 8px;
+	padding: 20px;
+	text-align: center;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+
+/* Patient's profile picture */
+.patient-card img {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	margin-bottom: 10px;
+}
+
+/* Patient's name and ID */
+.patient-card h3 {
+	font-size: 20px;
+	margin: 10px 0 5px 0;
+	color: #333;
+}
+
+.patient-card p {
+	font-size: 14px;
+	color: #888;
+	margin: 5px 0;
+}
+
+/* Action icons */
+.patient-card .actions {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-top: 15px;
+}
+
+.patient-card .actions i {
+	font-size: 18px;
+	color: #007bff;
+	cursor: pointer;
+	transition: color 0.3s ease;
+}
+
+.patient-card .actions i:hover {
+	color: #0056b3;
+}
+
+/* Add new patient button */
+.add-patient {
+	text-align: right;
+	margin-bottom: 20px;
+}
+
+.add-patient button {
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.add-patient button:hover {
+	background-color: #0056b3;
+}
+
+/* Pagination styling */
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.pagination button {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 8px 15px;
+	border-radius: 4px;
+	margin: 0 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+	background-color: #0056b3;
+}
+
+.pagination button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
