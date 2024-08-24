@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainDashboard from './components/MainDashboard';
 import Sidebar from './components/Sidebar';
 import TopNav from './components/TopNav';
-import Patients from './components/Patients';
-import Calendar from './components/Calendar';
+import PatientDirectory from './components/PatientDirectory';
+import PatientDetails from './components/PatientDetails';
 import Appointment from './components/Appointments';
 import './index.css';
+import './App.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
+  const [patients, setPatients] = useState([
+    { name: 'Duncan Pitt', id: 'AG9ST2D0P5', age: 45, bloodGroup: 'O+', sex: 'M' },
+    { name: 'Mary Weather', id: 'R4L7Y9C2E1', age: 32, bloodGroup: 'O+', sex: 'F' },
+    // Add initial patients here
+  ]);
+
   return (
     <div className="flex bg-blue-100 min-h-screen">
       {/* Sidebar */}
@@ -24,11 +32,14 @@ function App() {
             {/* Route Management */}
             <Routes>
               <Route path="/" element={<MainDashboard />} />
-              <Route path="/patients" element={<Patients />} />
+              <Route
+                path="/patients"
+                element={<PatientDirectory patients={patients} setPatients={setPatients} />}
+              />
+              {/* Patient Details Route */}
+              
               <Route path="/appointment" element={<Appointment />} />
             </Routes>
-
-            
           </div>
         </div>
       </div>
