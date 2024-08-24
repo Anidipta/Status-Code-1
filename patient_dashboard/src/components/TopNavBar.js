@@ -25,9 +25,11 @@ const TopNavBar = ({ notification, unreadCount, setUnreadCount, profileImage }) 
       setActiveMenu('Health Records');
     } else if (path.includes('/appointments')) {
       setActiveMenu('Appointments');
-    } else if (path.includes('/health-overview')) {
-      setActiveMenu('Health Overview');
-    } else if (path.includes('/communication')) {
+    } //else if (path.includes('/health-overview')) 
+      //{
+      //setActiveMenu('Health Overview');
+    //}
+        else if (path.includes('/communication')) {
       setActiveMenu('Communication');
     } else if (path.includes('/feedback-support')) {
       setActiveMenu('Feedback & Support');
@@ -48,9 +50,12 @@ const TopNavBar = ({ notification, unreadCount, setUnreadCount, profileImage }) 
       navigate('/health-records');
     } else if (text === 'Appointments') {
       navigate('/appointments');
-    } else if (text === 'Health Overview') {
-      navigate('/health-overview');
-    } else if (text === 'Communication') {
+    } 
+    //else if (text === 'Health Overview') 
+    //{
+    //navigate('/health-overview');
+    //} 
+    else if (text === 'Communication') {
       navigate('/communication');
     } else if (text === 'Feedback & Support') {
       navigate('/feedback-support');
