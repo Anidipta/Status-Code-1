@@ -14,7 +14,7 @@ const MedicationSchedule = () => {
 
   return (
     <div style={styles.container}>
-      <h1>Medication Schedule</h1>
+      <h1 style={styles.title}>Medication Schedule</h1>
       <div style={styles.cardsContainer}>
         {medications.map((medication, index) => (
           <MedicationCard
@@ -31,6 +31,11 @@ const MedicationSchedule = () => {
 const styles = {
   container: {
     padding: '20px',
+  },
+  title: {
+    color: 'black', // Change the color to black
+    fontSize: '24px',
+    margin: '0',
   },
   cardsContainer: {
     display: 'flex',
