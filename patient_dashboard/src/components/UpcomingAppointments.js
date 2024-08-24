@@ -15,7 +15,7 @@ const UpcomingAppointments = () => {
 
   return (
     <div style={styles.container}>
-      <h1>Upcoming Appointments</h1>
+      <h1 style={styles.title}>Upcoming Appointments</h1>
       <div style={styles.cardsContainer}>
         {appointments.map((appointment, index) => (
           <AppointmentCard key={index} appointment={appointment} />
@@ -29,6 +29,11 @@ const UpcomingAppointments = () => {
 const styles = {
   container: {
     padding: '20px',
+  },
+  title: {
+    color: 'black', // Change the color to black
+    fontSize: '24px',
+    margin: '0',
   },
   cardsContainer: {
     display: 'flex',

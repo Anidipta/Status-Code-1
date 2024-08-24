@@ -11,7 +11,7 @@ const HealthOverview = () => {
 
   return (
     <div style={styles.container}>
-      <h1>MediTrack - Health Overview</h1>
+      <h1 style={styles.title}>MediTrack - Health Overview</h1>
       <div style={styles.cardsContainer}>
         {records.map((record, index) => (
           <div key={index} style={styles.healthRecordsCard}>
@@ -32,6 +32,11 @@ const HealthOverview = () => {
 const styles = {
   container: {
     padding: '20px',
+  },
+  title: {
+    color: 'black', // Change the color to black
+    fontSize: '24px',
+    margin: '0',
   },
   cardsContainer: {
     display: 'flex',

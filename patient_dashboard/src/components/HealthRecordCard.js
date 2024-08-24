@@ -29,7 +29,7 @@ const styles = {
   },
   text: {
     margin: '5px 0',
-    color: '#666',
+    color: '#333',
   },
 };
 
