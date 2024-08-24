@@ -33,6 +33,11 @@ const styles = {
   container: {
     padding: '20px',
   },
+  title: {
+    color: 'black', // Change the color to black
+    fontSize: '24px',
+    margin: '0',
+  },
   cardsContainer: {
     display: 'flex',
     flexDirection: 'column',
