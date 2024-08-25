@@ -1,204 +1,204 @@
-<!DOCTYPE html>
-<html lang="en">
+          <!DOCTYPE html>
+          <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MediTrack</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #5294ff, #a1c5ff, #cfe1ff);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>MediTrack</title>
+            <style>
+              body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background: linear-gradient(to right, #5294ff, #a1c5ff, #cfe1ff);
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
 
-    .container {
-      width: 800px;
-      background-color: white;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      display: flex;
-      overflow: hidden;
-    }
+              .container {
+                width: 800px;
+                background-color: white;
+                border-radius: 15px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                display: flex;
+                overflow: hidden;
+              }
 
-    .left-panel {
-      background-color: #4a00e0;
-      color: white;
-      padding: 30px;
-      text-align: center;
-      width: 35%;
-    }
+              .left-panel {
+                background-color: #4a00e0;
+                color: white;
+                padding: 30px;
+                text-align: center;
+                width: 35%;
+              }
 
-    .left-panel h2 {
-      font-size: 24px;
-      margin-top: 0;
-    }
+              .left-panel h2 {
+                font-size: 24px;
+                margin-top: 0;
+              }
 
-    .right-panel {
-      padding: 40px;
-      width: 65%;
-    }
+              .right-panel {
+                padding: 40px;
+                width: 65%;
+              }
 
-    .tabs {
-      display: flex;
-      justify-content: flex-end;
-    }
+              .tabs {
+                display: flex;
+                justify-content: flex-end;
+              }
 
-    .tabs button {
-      background-color: #6a11cb;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin-left: 10px;
-      border-radius: 20px;
-      cursor: pointer;
-    }
+              .tabs button {
+                background-color: #6a11cb;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                margin-left: 10px;
+                border-radius: 20px;
+                cursor: pointer;
+              }
 
-    .tabs button.active {
-      background-color: #3d00b3;
-    }
+              .tabs button.active {
+                background-color: #3d00b3;
+              }
 
-    form {
-      display: none;
-      margin-top: 20px;
-    }
+              form {
+                display: none;
+                margin-top: 20px;
+              }
 
-    form.active {
-      display: block;
-    }
+              form.active {
+                display: block;
+              }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    input[type="phone"] {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+              input[type="text"],
+              input[type="email"],
+              input[type="password"],
+              input[type="phone"] {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+              }
 
-    .radio-group {
-      margin: 15px 0;
-    }
+              .radio-group {
+                margin: 15px 0;
+              }
 
-    .radio-group input {
-      margin-right: 10px;
-    }
+              .radio-group input {
+                margin-right: 10px;
+              }
 
-    .submit-btn {
-      width: 100%;
-      padding: 10px;
-      background-color: #6a11cb;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+              .submit-btn {
+                width: 100%;
+                padding: 10px;
+                background-color: #6a11cb;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+              }
 
-    .submit-btn:hover {
-      background-color: #5d09c5;
-    }
+              .submit-btn:hover {
+                background-color: #5d09c5;
+              }
 
-    a {
-      color: #6a11cb;
-      text-decoration: none;
-    }
+              a {
+                color: #6a11cb;
+                text-decoration: none;
+              }
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
+              a:hover {
+                text-decoration: underline;
+              }
+            </style>
+          </head>
 
-<body>
+          <body>
 
-  <div class="container">
-    <div class="left-panel">
-      <h2>Welcome</h2>
-      <p>MediTrack</p>
-      <div class="rocket">
-        🚀
-      </div>
-    </div>
-    <div class="right-panel">
-      <div class="tabs">
-        <button class="tablink active" onclick="showForm('patient')">Patient</button>
-        <button class="tablink" onclick="showForm('doctor')">Doctor</button>
-        <button class="tablink" onclick="showForm('admin')">Admin</button>
-      </div>
+            <div class="container">
+              <div class="left-panel">
+                <h2>Welcome</h2>
+                <p>MediTrack</p>
+                <div class="rocket">
+                  🚀
+                </div>
+              </div>
+              <div class="right-panel">
+                <div class="tabs">
+                  <button class="tablink active" onclick="showForm('patient')">Patient</button>
+                  <button class="tablink" onclick="showForm('doctor')">Doctor</button>
+                  <button class="tablink" onclick="showForm('admin')">Admin</button>
+                </div>
 
-      <!-- Patient Registration Form -->
-      <form id="patient" class="active">
-        <h2>Register as Patient</h2>
-        <input type="text" placeholder="First Name *" required>
-        <input type="text" placeholder="Last Name *" required>
-        <input type="email" placeholder="Your Email *" required>
-        <input type="phone" placeholder="Your Phone *" required>
-        <input type="password" placeholder="Password *" required>
-        <input type="password" placeholder="Confirm Password *" required>
+                <!-- Patient Registration Form -->
+                <form id="patient" class="active">
+                  <h2>Register as Patient</h2>
+                  <input type="text" placeholder="First Name *" required>
+                  <input type="text" placeholder="Last Name *" required>
+                  <input type="email" placeholder="Your Email *" required>
+                  <input type="phone" placeholder="Your Phone *" required>
+                  <input type="password" placeholder="Password *" required>
+                  <input type="password" placeholder="Confirm Password *" required>
 
-        <div class="radio-group">
-          <input type="radio" name="gender" value="male" required> Male
-          <input type="radio" name="gender" value="female" required> Female
-        </div>
+                  <div class="radio-group">
+                    <input type="radio" name="gender" value="male" required> Male
+                    <input type="radio" name="gender" value="female" required> Female
+                  </div>
 
-        <button class="submit-btn">Register</button>
-        <p><a href="#">Already have an account?</a></p>
-      </form>
+                  <button class="submit-btn">Register</button>
+                  <p><a href="login.html">Already have an account?</a></p>
+                </form>
 
-      <!-- Doctor Registration Form -->
-      <form id="doctor">
-        <h2>Register as Doctor</h2>
-        <input type="text" placeholder="First Name *" required>
-        <input type="text" placeholder="Last Name *" required>
-        <input type="email" placeholder="Your Email *" required>
-        <input type="phone" placeholder="Your Phone *" required>
-        <input type="password" placeholder="Password *" required>
-        <input type="password" placeholder="Confirm Password *" required>
-        <input type="text" placeholder="Specialty *" required>
+                <!-- Doctor Registration Form -->
+                <form id="doctor">
+                  <h2>Register as Doctor</h2>
+                  <input type="text" placeholder="First Name *" required>
+                  <input type="text" placeholder="Last Name *" required>
+                  <input type="email" placeholder="Your Email *" required>
+                  <input type="phone" placeholder="Your Phone *" required>
+                  <input type="password" placeholder="Password *" required>
+                  <input type="password" placeholder="Confirm Password *" required>
+                  <input type="text" placeholder="Specialty *" required>
 
-        <button class="submit-btn">Register</button>
-        <p><a href="#">Already have an account?</a></p>
-      </form>
+                  <button class="submit-btn">Register</button>
+                  <p><a href="login.html">Already have an account?</a></p>
+                </form>
 
-      <!-- Admin Registration Form -->
-      <form id="admin">
-        <h2>Register as Admin</h2>
-        <input type="text" placeholder="First Name *" required>
-        <input type="text" placeholder="Last Name *" required>
-        <input type="email" placeholder="Your Email *" required>
-        <input type="phone" placeholder="Your Phone *" required>
-        <input type="password" placeholder="Password *" required>
-        <input type="password" placeholder="Confirm Password *" required>
-        <input type="text" placeholder="Hospital Name *" required>
+                <!-- Admin Registration Form -->
+                <form id="admin">
+                  <h2>Register as Admin</h2>
+                  <input type="text" placeholder="First Name *" required>
+                  <input type="text" placeholder="Last Name *" required>
+                  <input type="email" placeholder="Your Email *" required>
+                  <input type="phone" placeholder="Your Phone *" required>
+                  <input type="password" placeholder="Password *" required>
+                  <input type="password" placeholder="Confirm Password *" required>
+                  <input type="text" placeholder="Hospital Name *" required>
 
-        <button class="submit-btn">Register</button>
-        <p><a href="#">Already have an account?</a></p>
-      </form>
-    </div>
-  </div>
+                  <button class="submit-btn">Register</button>
+                  <p><a href="login.html">Already have an account?</a></p>
+                </form>
+              </div>
+            </div>
 
-  <script>
-    function showForm(formId) {
-      // Hide all forms
-      const forms = document.querySelectorAll('form');
-      forms.forEach(form => form.classList.remove('active'));
+            <script>
+              function showForm(formId) {
+                // Hide all forms
+                const forms = document.querySelectorAll('form');
+                forms.forEach(form => form.classList.remove('active'));
 
-      // Show the selected form
-      document.getElementById(formId).classList.add('active');
+                // Show the selected form
+                document.getElementById(formId).classList.add('active');
 
-      // Update active tab button
-      const tabs = document.querySelectorAll('.tablink');
-      tabs.forEach(tab => tab.classList.remove('active'));
-      document.querySelector(`button[onclick="showForm('${formId}')"]`).classList.add('active');
-    }
-  </script>
+                // Update active tab button
+                const tabs = document.querySelectorAll('.tablink');
+                tabs.forEach(tab => tab.classList.remove('active'));
+                document.querySelector(button[onclick="showForm('${formId}')"]).classList.add('active');
+              }
+            </script>
 
-</body>
+          </body>
 
-</html>
+          </html>
