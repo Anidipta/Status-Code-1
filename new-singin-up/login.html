@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediTrack - Login</title>
+    <style>
+        <style>body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #a1c5ff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 800px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            display: flex;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            background-color: #2563ea;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            width: 35%;
+        }
+
+        .left-panel h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        .left-panel p {
+            font-size: 35px;
+        }
+
+        .rocket {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rocket img {
+            width: 150px;
+            height: 150px;
+            border-radius: 20%;
+            object-fit: cover;
+        }
+
+        .right-panel {
+            padding: 40px;
+            width: 65%;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .tabs button {
+            background-color: #6a10d0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .tabs button.active {
+            background-color: #32bc4a;
+        }
+
+        form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        form.active {
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #6a10d0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #32bc4a;
+        }
+
+        a {
+            color: #6a10d0;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="right-panel">
+            <div class="tabs">
+                <button class="tablink active" onclick="showForm('patient')">Patient</button>
+                <button class="tablink" onclick="showForm('doctor')">Doctor</button>
+                <button class="tablink" onclick="showForm('admin')">Admin</button>
+            </div>
+
+            <!-- Patient Login Form -->
+            <form id="patient" class="active">
+                <h2>Login as Patient</h2>
+                <input type="text" placeholder="Username *" required>
+                <input type="password" placeholder="Password *" required>
+
+                <button class="submit-btn">Login</button>
+            </form>
+
+            <!-- Doctor Login Form -->
+            <form id="doctor">
+                <h2>Login as Doctor</h2>
+                <input type="text" placeholder="Username *" required>
+                <input type="password" placeholder="Password *" required>
+
+                <button class="submit-btn">Login</button>
+            </form>
+
+            <!-- Admin Login Form -->
+            <form id="admin">
+                <h2>Login as Admin</h2>
+                <input type="text" placeholder="Username *" required>
+                <input type="password" placeholder="Password *" required>
+
+                <button class="submit-btn">Login</button>
+            </form>
+        </div>
+        <div class="left-panel animate">
+            <h2>Welcome</h2>
+            <p>MediTrack</p>
+            <div class="rocket">
+                🚀
+            </div>
+            <a href="registration.html" style="color: black;">New to it?</a>
+        </div>
+    </div>
+
+    <script>
+        function showForm(formId) {
+            // Hide all forms
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => form.classList.remove('active'));
+
+            // Show the selected form
+            document.getElementById(formId).classList.add('active');
+
+            // Update active tab button
+            const tabs = document.querySelectorAll('.tablink');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`button[onclick="showForm('${formId}')"]`).classList.add('active');
+        }
+
+        document.querySelector('.left-panel a').addEventListener('click', () => {
+            document.querySelector('.left-panel').classList.remove('animate');
+            setTimeout(() => {
+                window.location.href = 'register.html';
+            }, 500);
+        });
+    </script>
+
+</body>
+
+</html>

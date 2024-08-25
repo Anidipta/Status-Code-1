@@ -1,274 +1,134 @@
-import React, { useState } from 'react';
-import { Grid, Paper, Typography, Box, FormControl, Select, MenuItem } from '@mui/material';
-import { styled } from '@mui/system';
-import { Line } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Moon, Weight, Footprints, Flame, ChevronRight, Info } from "lucide-react";
+import { LineChart, Line, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+const glucoseData = [
+  { time: "00:00", value: 180 },
+  { time: "04:00", value: 220 },
+  { time: "08:00", value: 280 },
+  { time: "12:00", value: 160 },
+  { time: "16:00", value: 220 },
+  { time: "20:00", value: 240 },
+];
 
-const SpiralBinding = styled(Box)({
-  background: '#f7f7f7',
-  borderRadius: '10px',
-  padding: '20px',
-  fontFamily: "'Segoe Script', cursive",
-  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-  border: '2px solid #ccc',
-  position: 'relative',
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: '-20px',
-    width: '10px',
-    background: 'linear-gradient(to bottom, #ccc 10%, transparent 0%)',
-    backgroundSize: '10px 20px',
-    backgroundRepeat: 'repeat-y',
-  },
-});
+const heartrateData = [
+  { time: "00:00", value: 80 },
+  { time: "06:00", value: 90 },
+  { time: "12:00", value: 85 },
+  { time: "18:00", value: 88 },
+];
 
-const RightSection = styled(Box)({
-  background: '#e3f2fd',
-  borderRadius: '10px',
-  padding: '20px',
-  fontFamily: "'Segoe Script', cursive",
-  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-  border: '2px solid #ccc',
-});
+const oxygenData = [
+  { time: "00:00", value: 99 },
+  { time: "06:00", value: 99.5 },
+  { time: "12:00", value: 99.2 },
+  { time: "18:00", value: 99.8 },
+];
 
-const VisualsSection = styled(Paper)({
-  marginTop: '20px',
-  padding: '20px',
-  backgroundColor: '#fff',
-  borderRadius: '10px',
-  fontFamily: "'Segoe Script', cursive",
-  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-});
-
-// Sample data for vitals at different scales
-const generateData = (scale) => {
-  if (scale === 'daily') {
-    return {
-      labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
-      datasets: [
-        {
-          label: 'Blood Pressure (mmHg)',
-          data: [120, 125, 130, 128, 122, 127, 124],
-          borderColor: '#ff6384',
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        },
-        {
-          label: 'Heart Rate (bpm)',
-          data: [72, 74, 75, 73, 76, 72, 70],
-          borderColor: '#36a2eb',
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        },
-        {
-          label: 'Blood Glucose (mg/dL)',
-          data: [90, 95, 100, 105, 110, 108, 103],
-          borderColor: '#ff9f40',
-          backgroundColor: 'rgba(255, 159, 64, 0.2)',
-        },
-        {
-          label: 'Oxygen Saturation (%)',
-          data: [98, 97, 99, 97, 98, 96, 98],
-          borderColor: '#4bc0c0',
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        },
-        // Add more vitals if needed
-      ],
-    };
-  } else if (scale === 'monthly') {
-    return {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label: 'Blood Pressure (mmHg)',
-          data: [125, 126, 130, 128, 126, 127, 129],
-          borderColor: '#ff6384',
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        },
-        {
-          label: 'Heart Rate (bpm)',
-          data: [72, 73, 74, 75, 72, 73, 74],
-          borderColor: '#36a2eb',
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        },
-        {
-          label: 'Blood Glucose (mg/dL)',
-          data: [100, 105, 107, 110, 108, 106, 109],
-          borderColor: '#ff9f40',
-          backgroundColor: 'rgba(255, 159, 64, 0.2)',
-        },
-        {
-          label: 'Oxygen Saturation (%)',
-          data: [97, 98, 97, 98, 96, 98, 97],
-          borderColor: '#4bc0c0',
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        },
-        // Add more vitals if needed
-      ],
-    };
-  } else if (scale === 'yearly') {
-    return {
-      labels: ['2021', '2022', '2023', '2024'],
-      datasets: [
-        {
-          label: 'Blood Pressure (mmHg)',
-          data: [125, 126, 127, 128],
-          borderColor: '#ff6384',
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        },
-        {
-          label: 'Heart Rate (bpm)',
-          data: [72, 73, 74, 75],
-          borderColor: '#36a2eb',
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        },
-        {
-          label: 'Blood Glucose (mg/dL)',
-          data: [102, 105, 107, 110],
-          borderColor: '#ff9f40',
-          backgroundColor: 'rgba(255, 159, 64, 0.2)',
-        },
-        {
-          label: 'Oxygen Saturation (%)',
-          data: [98, 97, 98, 96],
-          borderColor: '#4bc0c0',
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        },
-        // Add more vitals if needed
-      ],
-    };
-  }
-};
-
-// Chart options
-const chartOptions = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Vitals Overview',
-    },
-  },
-};
-
-const HealthRecords = () => {
-  const [timeScale, setTimeScale] = useState('daily'); // Track the selected time scale
-
-  // Handle time scale change
-  const handleTimeScaleChange = (event) => {
-    setTimeScale(event.target.value);
-  };
-
+export default function HealthDashboard() {
   return (
-    <Box sx={{ flexGrow: 1, padding: '20px' }}>
-      <Grid container spacing={3}>
-        {/* Medical History and Current Treatments */}
-        <Grid item xs={12} md={6}>
-          <SpiralBinding>
-            <Typography
-              variant="h5"
-              gutterBottom
-              style={{
-                fontFamily: "Alanis Hand",
-                color: '#4b0082', // Heading color (Indigo)
-                fontWeight: 'bold',
-              }}
-            >
-              Medical History
-            </Typography>
-            <Typography
-              variant="body1"
-              style={{
-                fontFamily: "'Segoe Script', cursive",
-                color: '#00008b', // Body text color (Dark Blue)
-              }}
-            >
-              - Hypertension: Diagnosed in 2021 <br />
-              - Diabetes Type 2: Under control with medication <br />
-              - Asthma: Regular use of inhaler <br />
-              - Allergies: Seasonal allergies managed with antihistamines <br />
-            </Typography>
-          </SpiralBinding>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <RightSection>
-            <Typography
-              variant="h5"
-              gutterBottom
-              style={{
-                fontFamily: "Alanis Hand",
-                color: '#4b0082', // Heading color (Indigo)
-                fontWeight: 'bold',
-              }}
-            >
-              Current Treatments
-            </Typography>
-            <Typography
-              variant="body1"
-              style={{
-                fontFamily: "'Segoe Script', cursive",
-                color: '#00008b', // Body text color (Dark Blue)
-              }}
-            >
-              - Metformin: 500mg twice a day for diabetes <br />
-              - Amlodipine: 5mg daily for blood pressure control <br />
-              - Salbutamol: Inhaler as needed for asthma <br />
-              - Lisinopril: 10mg daily for hypertension <br />
-            </Typography>
-          </RightSection>
-        </Grid>
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <MetricCard icon={<Moon className="h-4 w-4" />} title="Sleep" value="7h 33m" color="bg-blue-500" />
+        <MetricCard icon={<Weight className="h-4 w-4" />} title="Weight" value="87 kg" />
+        <MetricCard icon={<Footprints className="h-4 w-4" />} title="Steps" value="3,315" />
+        <MetricCard icon={<Flame className="h-4 w-4" />} title="Burn" value="2,587 kcal" />
+      </div>
 
-        {/* Visuals Section */}
-        <Grid item xs={12}>
-          <VisualsSection>
-            <Typography
-              variant="h5"
-              gutterBottom
-              style={{
-                fontFamily: "Alanis Hand",
-                color: '#4b0082', // Heading color (Indigo)
-                fontWeight: 'bold',
-              }}
-            >
-              Vitals & Visuals
-            </Typography>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Glucose</CardTitle>
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">Today: avg. 211 mg/dl</div>
+            <ResponsiveContainer width="100%" height={200}>
+              <LineChart data={glucoseData}>
+                <XAxis dataKey="time" hide />
+                <YAxis hide domain={[100, 300]} />
+                <Line type="monotone" dataKey="value" stroke="#22c55e" strokeWidth={2} dot={false} />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
 
-            {/* Dropdown to select time scale */}
-            <FormControl fullWidth margin="normal">
-              <Select
-                value={timeScale}
-                onChange={handleTimeScaleChange}
-                displayEmpty
-                inputProps={{ 'aria-label': 'Time Scale' }}
-              >
-                <MenuItem value="daily">Daily</MenuItem>
-                <MenuItem value="monthly">Monthly</MenuItem>
-                <MenuItem value="yearly">Yearly</MenuItem>
-              </Select>
-            </FormControl>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Body info</CardTitle>
+            <Info className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <Tabs defaultValue="pulmonology">
+              <TabsList>
+                <TabsTrigger value="pulmonology">Pulmonology</TabsTrigger>
+                <TabsTrigger value="skeletal">Skeletal system</TabsTrigger>
+                <TabsTrigger value="muscle">Muscle system</TabsTrigger>
+                <TabsTrigger value="nervous">Nervous system</TabsTrigger>
+              </TabsList>
+              <TabsContent value="pulmonology" className="mt-4">
+                <div className="relative h-64">
+                  <div className="absolute inset-0 bg-blue-100 opacity-50"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className="text-center">
+                      <div className="text-sm font-medium">Oxygen level</div>
+                      <div className="text-2xl font-bold">+1.2%</div>
+                      <div className="text-sm font-medium mt-2">SpO2</div>
+                      <div className="text-4xl font-bold">98%</div>
+                    </div>
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
+          </CardContent>
+        </Card>
 
-            {/* Adding a Line Chart */}
-            <Line data={generateData(timeScale)} options={chartOptions} />
-          </VisualsSection>
-        </Grid>
-      </Grid>
-    </Box>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Heartrate</CardTitle>
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">Today: avg. 80 bpm</div>
+            <ResponsiveContainer width="100%" height={100}>
+              <LineChart data={heartrateData}>
+                <Line type="monotone" dataKey="value" stroke="#ef4444" strokeWidth={2} dot={false} />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Oxygen</CardTitle>
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">Today: avg. 99%</div>
+            <ResponsiveContainer width="100%" height={100}>
+              <LineChart data={oxygenData}>
+                <Line type="monotone" dataKey="value" stroke="#3b82f6" strokeWidth={2} dot={false} />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   );
-};
+}
 
-export default HealthRecords;
+function MetricCard({ icon, title, value, color = "bg-blue-100" }) {
+  return (
+    <Card className={${color} text-white}>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">{title}</CardTitle>
+        {icon}
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold">{value}</div>
+      </CardContent>
+    </Card>
+  );
+}
