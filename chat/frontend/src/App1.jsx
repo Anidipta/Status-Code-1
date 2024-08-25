@@ -1,11 +1,10 @@
 import { useState } from "react";
-
-import "./App.css";
-
+import axios from "axios";
+import "./App1.css";
 import AuthPage from "./AuthPage";
 import ChatsPage from "./ChatsPage";
 
-function App() {
+function App1() {
   const [user, setUser] = useState(undefined);
 
   if (!user) {
@@ -15,4 +14,4 @@ function App() {
   }
 }
 
-export default App;
+export default App1;
